@@ -12,4 +12,6 @@ func chapterFour() {
     print("one more line")
     print("another one")
     print("keep going")
+    print("show it again")
+    print("print")
 }
