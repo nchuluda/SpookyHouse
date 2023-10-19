@@ -7,5 +7,5 @@ import Foundation
 
 func chapterFour() {
     // Your portion of the story goes here
-    print("adding print to chapter 4")
+    print("And the ghosts lived happily ever after.")
 }
