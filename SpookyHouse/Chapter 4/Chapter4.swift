@@ -10,4 +10,5 @@ func chapterFour() {
     print("And the ghosts lived happily ever after.")
     print("Until...")
     print("one more line")
+    print("another one")
 }
