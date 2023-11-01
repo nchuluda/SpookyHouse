@@ -18,13 +18,8 @@ var ghost3 = Ghost()
 var ghost4 = Ghost()
 
 struct Ghost {
-    var phrase: String?
-    var verb: String?
-    
-    init(phrase: String? = nil, verb: String? = nil) {
-        self.phrase = phrase
-        self.verb = verb
-    }
+    var phrase: String? = nil
+    var verb: String? = nil
 }
 
 func ghostFactory(numberOfGhosts: Int) {
