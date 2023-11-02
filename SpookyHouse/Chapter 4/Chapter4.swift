@@ -22,44 +22,13 @@ struct Ghost {
     var verb: String? = nil
 }
 
-func ghostFactory(numberOfGhosts: Int) {
-    switch numberOfGhosts {
-    case 2:
-        ghost1.phrase = phrases.randomElement()!
-        ghost1.verb = verbs.randomElement()!
-        phrases = phrases.filter { $0 != ghost1.phrase }
-        verbs = verbs.filter { $0 != ghost1.verb }
-        ghost2.phrase = phrases.randomElement()!
-        ghost2.verb = verbs.randomElement()!
-    case 3:
-        ghost1.phrase = phrases.randomElement()!
-        ghost1.verb = verbs.randomElement()!
-        phrases = phrases.filter { $0 != ghost1.phrase }
-        verbs = verbs.filter { $0 != ghost1.verb }
-        ghost2.phrase = phrases.randomElement()!
-        ghost2.verb = verbs.randomElement()!
-        phrases = phrases.filter { $0 != ghost2.phrase }
-        verbs = verbs.filter { $0 != ghost2.verb }
-        ghost3.phrase = phrases.randomElement()!
-        ghost3.verb = verbs.randomElement()!
-    case 4:
-        ghost1.phrase = phrases.randomElement()!
-        ghost1.verb = verbs.randomElement()!
-        phrases = phrases.filter { $0 != ghost1.phrase }
-        verbs = verbs.filter { $0 != ghost1.verb }
-        ghost2.phrase = phrases.randomElement()!
-        ghost2.verb = verbs.randomElement()!
-        phrases = phrases.filter { $0 != ghost2.phrase }
-        verbs = verbs.filter { $0 != ghost2.verb }
-        ghost3.phrase = phrases.randomElement()!
-        ghost3.verb = verbs.randomElement()!
-        phrases = phrases.filter { $0 != ghost3.phrase }
-        verbs = verbs.filter { $0 != ghost3.verb }
-        ghost4.phrase = phrases.randomElement()!
-        ghost4.verb = verbs.randomElement()!
-    default:
-        break
-    }
+func ghostFactory() {
+    phrases.shuffle()
+    verbs.shuffle()
+    ghost1 = Ghost(phrase: phrases[0], verb: verbs[0])
+    ghost2 = Ghost(phrase: phrases[1], verb: verbs[1])
+    ghost3 = Ghost(phrase: phrases[2], verb: verbs[2])
+    ghost4 = Ghost(phrase: phrases[3], verb: verbs[3])
 }
 
 func introduction() {
@@ -74,10 +43,11 @@ func lightTurnsOn() {
     print("Frightened, he turns around and looks behind him, but doesn't see anything.")
     print("\"\(ghost1.phrase!)\" \(ghost1.verb!) the first ghost.")
     print("\"\(ghost2.phrase!)\" \(ghost2.verb!) the second ghost.")
-    if ghost3.phrase != nil && ghost3.verb != nil {
+    if numberOfGhosts == 3 {
         print("\"\(ghost3.phrase!)\" \(ghost3.verb!) the third ghost.")
     }
-    if ghost4.phrase != nil && ghost4.phrase != nil {
+    if numberOfGhosts == 4 {
+        print("\"\(ghost3.phrase!)\" \(ghost3.verb!) the third ghost.")
         print("\"\(ghost4.phrase!)\" \(ghost4.verb!) the fourth ghost.")
     }
     print("\(myName) runs as fast as he can back downstairs to find his friends.")
@@ -91,10 +61,11 @@ func lightBroken() {
     print("He opens the trunk, and immediately, \(numberOfGhosts) ghosts fly out and start circling the room.")
     print("\"\(ghost1.phrase!)\" \(ghost1.verb!) the first ghost.")
     print("\"\(ghost2.phrase!)\" \(ghost2.verb!) the second ghost.")
-    if ghost3.phrase != nil && ghost3.verb != nil {
+    if numberOfGhosts == 3 {
         print("\"\(ghost3.phrase!)\" \(ghost3.verb!) the third ghost.")
     }
-    if ghost4.phrase != nil && ghost4.phrase != nil {
+    if numberOfGhosts == 4 {
+        print("\"\(ghost3.phrase!)\" \(ghost3.verb!) the third ghost.")
         print("\"\(ghost4.phrase!)\" \(ghost4.verb!) the fourth ghost.")
     }
     print("\(myName) turns around and tries to open the bedroom door. Luckily it isn't locked.")
@@ -103,8 +74,9 @@ func lightBroken() {
 
 func chapterFour() {
     // Assign random phrases and verbs to each ghost
-    ghostFactory(numberOfGhosts: numberOfGhosts)
+    ghostFactory()
     
+    // Start telling story
     introduction()
     
     if doesLightWork {
