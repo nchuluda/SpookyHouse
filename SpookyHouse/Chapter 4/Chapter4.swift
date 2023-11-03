@@ -31,6 +31,12 @@ func ghostFactory() {
     ghost4 = Ghost(phrase: phrases[3], verb: verbs[3])
 }
 
+enum Ending: CaseIterable {
+    case downstairs, outside, friends
+}
+
+var randomEnding = Ending.allCases.randomElement()!
+
 func introduction() {
     print("Standing outside a bedroom door, \(myName) reaches out and turns the doorknob. The door creaks as he opens the door.")
 }
@@ -50,7 +56,6 @@ func lightTurnsOn() {
         print("\"\(ghost3.phrase!)\" \(ghost3.verb!) the third ghost.")
         print("\"\(ghost4.phrase!)\" \(ghost4.verb!) the fourth ghost.")
     }
-    print("\(myName) runs as fast as he can back downstairs to find his friends.")
 }
 
 func lightBroken() {
@@ -68,8 +73,17 @@ func lightBroken() {
         print("\"\(ghost3.phrase!)\" \(ghost3.verb!) the third ghost.")
         print("\"\(ghost4.phrase!)\" \(ghost4.verb!) the fourth ghost.")
     }
-    print("\(myName) turns around and tries to open the bedroom door. Luckily it isn't locked.")
-    print("He runs as fast as he can back downstairs to find his friends.")
+}
+
+func ending(_ randomEnding: Ending) {
+    switch randomEnding {
+    case .downstairs:
+        print("Startled, he runs downstairs as fast as he could to find his friends.")
+    case .outside:
+        print("Terrified, he runs downstairs and right out the front door, never to return again.")
+    case .friends:
+        print("Fascinated, he yells to his friends to come see the ghosts for themselves.")
+    }
 }
 
 func chapterFour() {
@@ -84,4 +98,9 @@ func chapterFour() {
     } else {
         lightBroken()
     }
+    
+    ending(randomEnding)
 }
+
+
+
