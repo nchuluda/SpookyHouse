@@ -17,6 +17,9 @@ var ghost2 = Ghost()
 var ghost3 = Ghost()
 var ghost4 = Ghost()
 
+let ghosts = [ghost1, ghost2, ghost3, ghost4]
+let ordinals = ["first", "second", "third", "fourth"]
+
 struct Ghost {
     var phrase: String? = nil
     var verb: String? = nil
@@ -47,15 +50,7 @@ func lightTurnsOn() {
     print("\(myName) takes out his camera and takes a picture of himself in the mirror.")
     print("To his surprise, \(numberOfGhosts) ghosts are behind him in the photograph!")
     print("Frightened, he turns around and looks behind him, but doesn't see anything.")
-    print("\"\(ghost1.phrase!)\" \(ghost1.verb!) the first ghost.")
-    print("\"\(ghost2.phrase!)\" \(ghost2.verb!) the second ghost.")
-    if numberOfGhosts == 3 {
-        print("\"\(ghost3.phrase!)\" \(ghost3.verb!) the third ghost.")
-    }
-    if numberOfGhosts == 4 {
-        print("\"\(ghost3.phrase!)\" \(ghost3.verb!) the third ghost.")
-        print("\"\(ghost4.phrase!)\" \(ghost4.verb!) the fourth ghost.")
-    }
+    ghostsSay(numberOfGhosts)
 }
 
 func lightBroken() {
@@ -64,14 +59,12 @@ func lightBroken() {
     print("Frightened in the dark, he shines his flashlight around the room.")
     print("The only thing he sees in the room is a wooden trunk. He approaches it, and sees the the latches are not fastened shut.")
     print("He opens the trunk, and immediately, \(numberOfGhosts) ghosts fly out and start circling the room.")
-    print("\"\(ghost1.phrase!)\" \(ghost1.verb!) the first ghost.")
-    print("\"\(ghost2.phrase!)\" \(ghost2.verb!) the second ghost.")
-    if numberOfGhosts == 3 {
-        print("\"\(ghost3.phrase!)\" \(ghost3.verb!) the third ghost.")
-    }
-    if numberOfGhosts == 4 {
-        print("\"\(ghost3.phrase!)\" \(ghost3.verb!) the third ghost.")
-        print("\"\(ghost4.phrase!)\" \(ghost4.verb!) the fourth ghost.")
+    ghostsSay(numberOfGhosts)
+}
+
+func ghostsSay(_ numberOfGhosts: Int) {
+    for i in 0..<numberOfGhosts {
+        print("\"\(ghosts[i].phrase!)\" \(ghosts[i].verb!) the \(ordinals[i]) ghost.")
     }
 }
 
