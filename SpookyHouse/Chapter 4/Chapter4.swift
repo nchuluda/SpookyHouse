@@ -7,31 +7,31 @@ import Foundation
 
 let myName = "Nathan"
 let doesLightWork = Bool.random()
-let numberOfGhosts = Int.random(in: 2...4)
+let numberOfPhantoms = Int.random(in: 2...4)
 
 var phrases = ["Boo!", "Leave us alone!", "Get out!", "You aren't welcome here!", "This is our house!"]
 var verbs = ["howls", "hisses", "shrieks", "screams", "shouts", "booms", "yells"]
 
-var ghost1 = Ghost()
-var ghost2 = Ghost()
-var ghost3 = Ghost()
-var ghost4 = Ghost()
+var phantom1 = Phantom()
+var phantom2 = Phantom()
+var phantom3 = Phantom()
+var phantom4 = Phantom()
 
-let ghosts = [ghost1, ghost2, ghost3, ghost4]
-let ordinals = ["first", "second", "third", "fourth"]
+let phantoms = [phantom1, phantom2, phantom3, phantom4]
 
-struct Ghost {
+struct Phantom {
     var phrase: String? = nil
     var verb: String? = nil
+    var ordinal: String = ""
 }
 
-func ghostFactory() {
+func phantomFactory() {
     phrases.shuffle()
     verbs.shuffle()
-    ghost1 = Ghost(phrase: phrases[0], verb: verbs[0])
-    ghost2 = Ghost(phrase: phrases[1], verb: verbs[1])
-    ghost3 = Ghost(phrase: phrases[2], verb: verbs[2])
-    ghost4 = Ghost(phrase: phrases[3], verb: verbs[3])
+    phantom1 = Phantom(phrase: phrases[0], verb: verbs[0], ordinal: "first")
+    phantom2 = Phantom(phrase: phrases[1], verb: verbs[1], ordinal: "second")
+    phantom3 = Phantom(phrase: phrases[2], verb: verbs[2], ordinal: "third")
+    phantom4 = Phantom(phrase: phrases[3], verb: verbs[3], ordinal: "fourth")
 }
 
 enum Ending: CaseIterable {
@@ -48,9 +48,10 @@ func lightTurnsOn() {
     print("\(myName) flips the light switch and the light turns on. He steps inside and looks around.")
     print("The room is empty except for a large mirror hanging on the wall.")
     print("\(myName) takes out his camera and takes a picture of himself in the mirror.")
-    print("To his surprise, \(numberOfGhosts) ghosts are behind him in the photograph!")
+    print("To his surprise, \(numberOfPhantoms) phantoms are behind him in the photograph!")
     print("Frightened, he turns around and looks behind him, but doesn't see anything.")
-    ghostsSay(numberOfGhosts)
+    print("He hears the invisible phantoms clearly:")
+    phantomsSay(numberOfPhantoms)
 }
 
 func lightBroken() {
@@ -58,13 +59,13 @@ func lightBroken() {
     print("To his surprise, the door slams behind him.")
     print("Frightened in the dark, he shines his flashlight around the room.")
     print("The only thing he sees in the room is a wooden trunk. He approaches it, and sees the the latches are not fastened shut.")
-    print("He opens the trunk, and immediately, \(numberOfGhosts) ghosts fly out and start circling the room.")
-    ghostsSay(numberOfGhosts)
+    print("He opens the trunk, and immediately, \(numberOfPhantoms) phantoms fly out and start circling the room.")
+    phantomsSay(numberOfPhantoms)
 }
 
-func ghostsSay(_ numberOfGhosts: Int) {
-    for i in 0..<numberOfGhosts {
-        print("\"\(ghosts[i].phrase!)\" \(ghosts[i].verb!) the \(ordinals[i]) ghost.")
+func phantomsSay(_ numberOfPhantoms: Int) {
+    for i in 0..<numberOfPhantoms {
+        print("\"\(phantoms[i].phrase!)\" \(phantoms[i].verb!) the \(phantoms[i].ordinal) phantom.")
     }
 }
 
@@ -75,13 +76,13 @@ func ending(_ randomEnding: Ending) {
     case .outside:
         print("Terrified, he runs downstairs and right out the front door, never to return again.")
     case .friends:
-        print("Fascinated, he yells to his friends to come see the ghosts for themselves.")
+        print("Fascinated, he calls his friends so they can come see the phantoms for themselves.")
     }
 }
 
 func chapterFour() {
     // Assign random phrases and verbs to each ghost
-    ghostFactory()
+    phantomFactory()
     
     // Start telling story
     introduction()
@@ -94,6 +95,3 @@ func chapterFour() {
     
     ending(randomEnding)
 }
-
-
-
