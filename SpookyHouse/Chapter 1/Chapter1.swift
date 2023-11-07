@@ -27,11 +27,11 @@ func chapterOne() {
 
 
 
-                    var ghostAge = 110
-                    var ghostSound = ["loud", "Quite", "Soft" ]
+                    let ghostAge = 110
+                    let ghostSound = ["loud", "Quite", "Soft" ]
                     let ghostSoundLoud = "loud"
-                    var ghostSoundLevel = ghostSound.randomElement() ?? ""
-                    var ghostColor = "Red"
+                    let ghostSoundLevel = ghostSound.randomElement() ?? ""
+                    let ghostColor = "Red"
                     
                 func ghostColorAndSound () {
 
