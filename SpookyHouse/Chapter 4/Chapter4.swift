@@ -38,7 +38,7 @@ enum Ending: CaseIterable {
     case downstairs, outside, friends
 }
 
-var randomEnding = Ending.allCases.randomElement()!
+let randomEnding = Ending.allCases.randomElement() ?? .downstairs
 
 func introduction() {
     print("Standing outside a bedroom door, \(myName) reaches out and turns the doorknob. The door creaks as he opens the door.")
@@ -72,7 +72,7 @@ func phantomsSay(_ numberOfPhantoms: Int) {
 func ending(_ randomEnding: Ending) {
     switch randomEnding {
     case .downstairs:
-        print("Startled, he runs downstairs as fast as he could to find his friends.")
+        print("Startled, he runs downstairs as fast as he can to find his friends.")
     case .outside:
         print("Terrified, he runs downstairs and right out the front door, never to return again.")
     case .friends:
